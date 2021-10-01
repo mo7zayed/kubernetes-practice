@@ -5,7 +5,7 @@ import TaskList from './components/TaskList';
 import NewTask from './components/NewTask';
 
 const config = {
-  tasksServiceUrl: 'http://192.168.99.100:32140'
+  tasksServiceUrl: '/api'
 }
 
 function App() {

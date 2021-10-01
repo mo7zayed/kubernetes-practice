@@ -41,7 +41,7 @@ app.get('/tasks', async (req, res) => {
     fs.readFile(filePath, (err, data) => {
       if (err) {
         console.log(err);
-        return res.status(500).json({ message: 'Loading the tasks failed.' });
+        return res.status(200).json({ message: 'Loading the tasks failed.', tasks: [] });
       }
       const strData = data.toString();
       const entries = strData.split('TASK_SPLIT');
