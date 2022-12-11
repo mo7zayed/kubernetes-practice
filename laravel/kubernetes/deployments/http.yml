@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http
+spec:
+  selector:
+    matchLabels:
+      app: http
+  template:
+    metadata:
+      labels:
+        app: http
+    spec:
+      containers:
+        - name: http
+          image: mo7zayed/larakube-http:latest
+          imagePullPolicy: Always
+          env:
+            - name: "APP_NAME"
+              value: "laravel"
+            - name: "APP_ENV"
+              value: "local"
+            - name: "APP_KEY"
+              value: "base64:5dDZcnIE7ZM9s+ei32i3WgcB9enjMDVgQ/9QWtZbzhw="
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 10
+            initialDelaySeconds: 10
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"

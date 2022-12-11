@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gofiber-http
+spec:
+  selector:
+    matchLabels:
+      app: gofiber-http
+  template:
+    metadata:
+      labels:
+        app: gofiber-http
+    spec:
+      containers:
+        - name: gofiber-http
+          image: mo7zayed/gofiber-http:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 10
+            initialDelaySeconds: 10
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
