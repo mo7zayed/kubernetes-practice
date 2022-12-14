@@ -6,3 +6,4 @@ spec:
   selector:
     app: horizon
   type: ExternalName
+  externalName: horizon

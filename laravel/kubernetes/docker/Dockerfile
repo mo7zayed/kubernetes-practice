@@ -36,4 +36,4 @@ RUN php artisan optimize
 
 EXPOSE 80
 
-CMD [ "php", "artisan", "octane:start", "--server=swoole", "--max-requests=500", "--host=0.0.0.0", "--port=80" ]
+CMD [ "php", "artisan", "serve", "--host=0.0.0.0", "--port=80" ]
