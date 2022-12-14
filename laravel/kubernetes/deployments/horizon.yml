@@ -1,26 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: http
+  name: horizon
 spec:
   selector:
     matchLabels:
-      app: http
+      app: horizon
   template:
     metadata:
       labels:
-        app: http
+        app: horizon
     spec:
       containers:
-        - name: http
-          image: mo7zayed/larakube-http:latest
+        - name: horizon
+          image: mo7zayed/larakube-horizon:latest
           imagePullPolicy: Always
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            periodSeconds: 10
-            initialDelaySeconds: 10
           resources:
             limits:
               memory: "1024Mi"

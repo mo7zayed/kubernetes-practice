@@ -1,5 +1,7 @@
 <?php
 
+use App\Jobs\TestKubeJob;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
+});
+
+Route::get('/dispatch', function (Request $request) {
+    for ($i = 0; $i < 1000; $i++) {
+        dispatch(new TestKubeJob)->onQueue($request->input('queue', 'default'));
+    }
+
+    return ['msg' => '1000 jobs dispatched'];
 });
 
 require __DIR__.'/auth.php';
