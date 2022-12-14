@@ -99,9 +99,9 @@ return [
     */
 
     'trim' => [
-        'recent' => 60,
-        'pending' => 60,
-        'completed' => 60,
+        'recent' => 10080,
+        'pending' => 10080,
+        'completed' => 10080,
         'recent_failed' => 10080,
         'failed' => 10080,
         'monitored' => 10080,
@@ -151,7 +151,7 @@ return [
     |
     */
 
-    'memory_limit' => 64 * 8,
+    'memory_limit' => 64 * 4,
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +172,7 @@ return [
             'maxProcesses' => 1,
             'maxTime' => 0,
             'maxJobs' => 0,
-            'memory' => 128,
+            'memory' => 64,
             'tries' => 1,
             'timeout' => 60,
             'nice' => 0,
@@ -182,7 +182,7 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
-                'maxProcesses' => 6,
+                'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
@@ -190,7 +190,7 @@ return [
 
         'local' => [
             'supervisor-1' => [
-                'maxProcesses' => 6,
+                'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
