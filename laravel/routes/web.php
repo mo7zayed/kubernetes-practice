@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+    return [
+        'Laravel' => app()->version(),
+    ];
+});
+
+Route::get('/env', function () {
+    return [
+        'env' => $_ENV,
+    ];
 });
 
 Route::get('/dispatch', function (Request $request) {
@@ -26,5 +34,3 @@ Route::get('/dispatch', function (Request $request) {
 
     return ['msg' => '1000 jobs dispatched'];
 });
-
-require __DIR__.'/auth.php';

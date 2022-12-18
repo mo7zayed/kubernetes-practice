@@ -13,8 +13,17 @@ spec:
     spec:
       containers:
         - name: http
-          image: mo7zayed/larakube-http:latest
+          image: mo7zayed/larakube:latest
           imagePullPolicy: Always
+          command:
+            - php
+          args:
+            - -d
+            - memory_limit=-1
+            - artisan
+            - serve
+            - --host=0.0.0.0
+            - --port=80
           livenessProbe:
             httpGet:
               path: /

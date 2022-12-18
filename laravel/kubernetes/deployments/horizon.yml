@@ -13,8 +13,15 @@ spec:
     spec:
       containers:
         - name: horizon
-          image: mo7zayed/larakube-horizon:latest
+          image: mo7zayed/larakube:latest
           imagePullPolicy: Always
+          command:
+            - php
+          args:
+            - -d
+            - memory_limit=-1
+            - artisan
+            - horizon
           resources:
             limits:
               memory: "1500Mi"
